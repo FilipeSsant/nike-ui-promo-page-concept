@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
 export const Footer = styled.footer`
-  max-width: 1680px;
-  margin: 0 auto;
-  padding: 5.8rem 8rem;
+  margin: 0 2rem;
+  height: 16rem;
+  padding: 2rem 8rem;
   background: var(--white-500);
 
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
@@ -21,6 +22,11 @@ export const Footer = styled.footer`
     background: transparent;
     border: none;
   }
+
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    padding: 3rem 2rem;
+  } ;
 `
 
 export const NavigationContainer = styled.nav`

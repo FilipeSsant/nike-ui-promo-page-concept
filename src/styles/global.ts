@@ -22,7 +22,6 @@ export const GlobalStyles = createGlobalStyle`
     body {
         background:var(--white-600);
         color:var(--blue-400);
-        height:100%;
     }
 
     button {
@@ -37,6 +36,18 @@ export const GlobalStyles = createGlobalStyle`
     button {    
         font-family: 'Roboto Condensed', sans-serif;
         font-weight: 400;
+    }
+
+    html,body, #root {
+        height: 100%;
+        overflow-x: hidden;
+        @media screen and (max-width: 1200px) {
+            height: auto;
+        }
+
+        @media screen and (max-width: 720px) {
+            height: auto;
+        }
     }
 
 `
