@@ -180,7 +180,7 @@ export const ProductSize = styled(motion.button)<{ isSelected: boolean }>`
     isSelected
       ? css`
           border: 1px solid var(--black-400);
-          background-color: rgba(0, 0, 0, 0.03);
+          background-color: rgba(0, 0, 0, 0.02);
         `
       : css`
           &:hover {
