@@ -1,8 +1,22 @@
+import { Variants } from 'framer-motion'
 import * as Styles from './styles'
+
+const footerVariants: Variants = {
+  hidden: {
+    y: '100vh'
+  },
+  visible: {
+    y: 0,
+    transition: {
+      type: 'spring',
+      duration: 1
+    }
+  }
+}
 
 export function Footer() {
   return (
-    <Styles.Footer>
+    <Styles.Footer variants={footerVariants} initial="hidden" animate="visible">
       <Styles.NavigationContainer>
         <button>
           PREV

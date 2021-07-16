@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-export const Hero = styled.main`
+export const Hero = styled(motion.main)`
   margin: 0 2rem;
   height: calc(100% - 12rem - 16rem);
 
@@ -23,7 +24,7 @@ export const Product = styled.section`
   }
 `
 
-export const ProductInfoContainer = styled.div`
+export const ProductInfoContainer = styled(motion.div)`
   /* border: 1px solid purple; */
   flex: 2;
 `
@@ -116,7 +117,7 @@ export const ProductDetailsContainer = styled.div`
   /* border: 1px solid blue; */
 `
 
-export const ProductDetailsItem = styled.div`
+export const ProductDetailsItem = styled(motion.div)`
   & + div {
     margin-top: 4.8rem;
   }
@@ -136,7 +137,7 @@ export const ProductDetails = styled.div`
   margin-top: 2.8rem;
 `
 
-export const ProductSize = styled.button`
+export const ProductSize = styled(motion.button)`
   border: none;
   background: transparent;
 
@@ -153,25 +154,11 @@ export const ProductSize = styled.button`
   line-height: 2.4rem;
 `
 
-export const ProductColor = styled.button<{ color: string }>`
+export const ProductColor = styled(motion.button)<{ color: string }>`
   width: 48px;
   height: 48px;
 
   background: ${({ color }) => color};
   border: none;
   border-radius: 50%;
-`
-
-export const SocialMediaContainer = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: 2.4rem;
-
-  svg {
-    display: block;
-  }
-
-  svg + svg {
-    margin-top: 2.4rem;
-  }
 `
