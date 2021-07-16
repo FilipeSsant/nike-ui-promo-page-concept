@@ -1,4 +1,5 @@
-import { motion, Variants } from 'framer-motion'
+import { AnimateSharedLayout, motion, Variants } from 'framer-motion'
+import { useState } from 'react'
 import productImg from '../../img/nike-air-edge-270.png'
 import * as Styles from './styles'
 
@@ -74,6 +75,9 @@ const productDetailsVariants: Variants = {
 }
 
 export function Product() {
+  const [selectedColor, setSelectedColor] = useState(colors[0])
+  const [selectedSize, setSelectedSize] = useState<number>()
+
   return (
     <Styles.Hero variants={heroVariants} initial="hidden" animate="visible">
       <Styles.Product>
@@ -103,10 +107,18 @@ export function Product() {
             <Styles.ProductDetails>
               {sizes.map((size) => (
                 <Styles.ProductSize
-                  variants={productDetailsVariants}
+                  initial={{ scale: 0 }}
+                  animate={{
+                    scale: selectedSize === size ? 1.3 : 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 600
+                    }
+                  }}
                   type="button"
                   key={size}
-                  className="sizeBox"
+                  onClick={() => selectedSize !== size && setSelectedSize(size)}
+                  isSelected={selectedSize === size}
                 >
                   {size}
                 </Styles.ProductSize>
@@ -116,15 +128,32 @@ export function Product() {
           <Styles.ProductDetailsItem variants={productDetailsContainerVariants}>
             <strong>Select Color</strong>
             <Styles.ProductDetails>
-              {colors.map((color) => (
-                <Styles.ProductColor
-                  variants={productDetailsVariants}
-                  color={color}
-                  type="button"
-                  key={color}
-                  className="colorBox"
-                />
-              ))}
+              <AnimateSharedLayout>
+                {colors.map((color) => (
+                  <Styles.ProductColorBox
+                    variants={productDetailsVariants}
+                    key={color}
+                  >
+                    <Styles.ProductColor
+                      onClick={() => setSelectedColor(color)}
+                      color={color}
+                      type="button"
+                    />
+                    {color === selectedColor && (
+                      <Styles.ProductColorOutline
+                        layoutId="outline"
+                        initial={false}
+                        animate={{ borderColor: selectedColor }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 500,
+                          damping: 30
+                        }}
+                      />
+                    )}
+                  </Styles.ProductColorBox>
+                ))}
+              </AnimateSharedLayout>
             </Styles.ProductDetails>
           </Styles.ProductDetailsItem>
         </Styles.ProductDetailsContainer>

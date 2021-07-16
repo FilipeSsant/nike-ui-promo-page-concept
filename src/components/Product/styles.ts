@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Hero = styled(motion.main)`
   margin: 0 2rem;
@@ -137,7 +137,8 @@ export const ProductDetails = styled.div`
   margin-top: 2.8rem;
 `
 
-export const ProductSize = styled(motion.button)`
+export const ProductSize = styled(motion.button)<{ isSelected: boolean }>`
+  position: relative;
   border: none;
   background: transparent;
 
@@ -152,13 +153,81 @@ export const ProductSize = styled(motion.button)`
 
   font-size: 1.6rem;
   line-height: 2.4rem;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border: 1px solid transparent;
+    width: 0;
+    height: 0;
+    z-index: -1;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    bottom: -2px;
+    right: -2px;
+  }
+
+  transition: background-color 0.2s;
+
+  ${({ isSelected }) =>
+    isSelected
+      ? css`
+          border: 1px solid var(--black-400);
+          background-color: rgba(0, 0, 0, 0.03);
+        `
+      : css`
+          &:hover {
+            &::before,
+            &::after {
+              width: 100%;
+              height: 100%;
+            }
+
+            &::before {
+              border-top-color: var(--black-400);
+              border-right-color: var(--black-400);
+              transition: width 0.1s ease-out, height 0.1s ease-out 0.1s;
+            }
+
+            &::after {
+              border-bottom-color: var(--black-400);
+              border-left-color: var(--black-400);
+              transition: border-color 0s ease-out 0.2s,
+                width 0.1s ease-out 0.2s, height 0.2s ease-out 0.33s;
+            }
+          }
+        `}
 `
 
-export const ProductColor = styled(motion.button)<{ color: string }>`
+export const ProductColorBox = styled(motion.div)`
+  width: 48px;
+  height: 48px;
+
+  position: relative;
+`
+
+export const ProductColor = styled.button<{ color: string }>`
   width: 48px;
   height: 48px;
 
   background: ${({ color }) => color};
   border: none;
+  border-radius: 50%;
+`
+
+export const ProductColorOutline = styled(motion.div)`
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 6px solid white;
   border-radius: 50%;
 `
