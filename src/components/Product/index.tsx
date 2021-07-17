@@ -1,10 +1,7 @@
 import { AnimateSharedLayout, motion, Variants } from 'framer-motion'
 import { useState } from 'react'
-import productImg from '../../img/nike-air-edge-270.png'
+import { ProductProps, VariantProps } from '../../services/product'
 import * as Styles from './styles'
-
-const sizes = [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5]
-const colors = ['#B6A179', '#272425', '#6389CB', '#F2C758', '#FFFFFF']
 
 const heroVariants: Variants = {
   hidden: {
@@ -74,9 +71,26 @@ const productDetailsVariants: Variants = {
   }
 }
 
-export function Product() {
-  const [selectedColor, setSelectedColor] = useState(colors[0])
+interface ProductPageProps {
+  product: ProductProps
+}
+
+export function Product({ product }: ProductPageProps) {
+  const [actualVariant, setActualVariant] = useState<VariantProps>(
+    product.variants[0]
+  )
+
+  const [selectedColor, setSelectedColor] = useState(actualVariant.color)
   const [selectedSize, setSelectedSize] = useState<number>()
+
+  const changeProductVariant = (color: string) => {
+    setActualVariant(
+      product.variants.find((item) => {
+        if (item.color === color) return item
+      }) || product.variants[0]
+    )
+    setSelectedColor(color)
+  }
 
   return (
     <Styles.Hero variants={heroVariants} initial="hidden" animate="visible">
@@ -88,16 +102,23 @@ export function Product() {
                 MEN`S SHOE
               </motion.legend>
               <motion.h1 variants={productInfoVariants}>
-                NIKE AIR EDGE 270
+                {product.title}
               </motion.h1>
               <motion.p variants={productInfoVariants}>
-                The Nike Air Edge 270 takes the look of retro basketball and
-                puts it through a modern lens.
+                {product.description}
               </motion.p>
             </Styles.ProductInfo>
           </Styles.ProductInfoContainer>
           <Styles.ProductImageContainer>
-            <img src={productImg} alt="Nike Air Edge 270" />
+            <motion.div
+              key={actualVariant.img}
+              initial={{ scale: 0 }}
+              animate={{
+                scale: 1
+              }}
+            >
+              <img src={actualVariant.img} alt={product.title} />
+            </motion.div>
           </Styles.ProductImageContainer>
         </Styles.ProductInfoImageContainer>
 
@@ -105,23 +126,26 @@ export function Product() {
           <Styles.ProductDetailsItem variants={productDetailsContainerVariants}>
             <strong>Select Size (US)</strong>
             <Styles.ProductDetails>
-              {sizes.map((size) => (
-                <Styles.ProductSize
-                  initial={{ scale: 0 }}
-                  animate={{
-                    scale: selectedSize === size ? 1.3 : 1,
-                    transition: {
-                      type: 'spring',
-                      stiffness: 600
+              {product.sizes.map((size) => (
+                <motion.div variants={productDetailsVariants} key={size}>
+                  <Styles.ProductSize
+                    initial={{ scale: 0 }}
+                    animate={{
+                      scale: selectedSize === size ? 1.3 : 1,
+                      transition: {
+                        type: 'spring',
+                        stiffness: 600
+                      }
+                    }}
+                    type="button"
+                    onClick={() =>
+                      selectedSize !== size && setSelectedSize(size)
                     }
-                  }}
-                  type="button"
-                  key={size}
-                  onClick={() => selectedSize !== size && setSelectedSize(size)}
-                  isSelected={selectedSize === size}
-                >
-                  {size}
-                </Styles.ProductSize>
+                    isSelected={selectedSize === size}
+                  >
+                    {size}
+                  </Styles.ProductSize>
+                </motion.div>
               ))}
             </Styles.ProductDetails>
           </Styles.ProductDetailsItem>
@@ -129,13 +153,13 @@ export function Product() {
             <strong>Select Color</strong>
             <Styles.ProductDetails>
               <AnimateSharedLayout>
-                {colors.map((color) => (
+                {product.colors.map((color) => (
                   <Styles.ProductColorBox
                     variants={productDetailsVariants}
                     key={color}
                   >
                     <Styles.ProductColor
-                      onClick={() => setSelectedColor(color)}
+                      onClick={() => changeProductVariant(color)}
                       color={color}
                       type="button"
                     />

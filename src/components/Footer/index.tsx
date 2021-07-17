@@ -28,7 +28,7 @@ export function Footer() {
         </button>
       </Styles.NavigationContainer>
       <Styles.PriceContainer>
-        <button>ADD TO CART</button>
+        <button>PRODUCT VALUE</button>
         <div className="divider" />
         <span>$95.60</span>
       </Styles.PriceContainer>

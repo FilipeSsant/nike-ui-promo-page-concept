@@ -93,10 +93,13 @@ export const ProductImageContainer = styled.div`
   align-items: center;
   z-index: -1;
 
-  img {
-    /* border: 1px solid green; */
+  div {
     position: absolute;
     width: 800px;
+  }
+
+  img {
+    width: 100%;
     transform: translate(-55%, 0);
     @media screen and (max-width: 1200px) {
       transform: translate(-45%, 5%);
@@ -174,13 +177,10 @@ export const ProductSize = styled(motion.button)<{ isSelected: boolean }>`
     right: -2px;
   }
 
-  transition: background-color 0.2s;
-
   ${({ isSelected }) =>
     isSelected
       ? css`
           border: 1px solid var(--black-400);
-          background-color: rgba(0, 0, 0, 0.02);
         `
       : css`
           &:hover {
