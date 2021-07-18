@@ -1,9 +1,3 @@
-import nikeAirEdgeBlack from '../img/nike-air-edge-270-black.png'
-import nikeAirEdgeBlue from '../img/nike-air-edge-270-blue.png'
-import nikeAirEdgeBrown from '../img/nike-air-edge-270-brown.png'
-import nikeAirEdgeWhite from '../img/nike-air-edge-270-white.png'
-import nikeAirEdgeYellow from '../img/nike-air-edge-270-yellow.png'
-
 export interface VariantProps {
   img: string
   color: string
@@ -27,23 +21,23 @@ export const nikeAirEdge: ProductProps = {
   sizes: [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5],
   variants: [
     {
-      img: nikeAirEdgeBrown,
+      img: 'nike-air-edge-270-brown.png',
       color: '#B6A179'
     },
     {
-      img: nikeAirEdgeBlack,
+      img: 'nike-air-edge-270-black.png',
       color: '#272425'
     },
     {
-      img: nikeAirEdgeBlue,
+      img: 'nike-air-edge-270-blue.png',
       color: '#6389CB'
     },
     {
-      img: nikeAirEdgeYellow,
+      img: 'nike-air-edge-270-yellow.png',
       color: '#F2C758'
     },
     {
-      img: nikeAirEdgeWhite,
+      img: 'nike-air-edge-270-white.png',
       color: '#FFFFFF'
     }
   ]
