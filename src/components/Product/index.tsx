@@ -121,7 +121,10 @@ export function Product({ product }: ProductPageProps) {
                 }
               }}
             >
-              <img src={`/img/${actualVariant.img}`} alt={product.title} />
+              <img
+                src={`/img/${actualVariant.img}?nf_resize=fit`}
+                alt={product.title}
+              />
             </motion.div>
           </Styles.ProductImageContainer>
         </Styles.ProductInfoImageContainer>
