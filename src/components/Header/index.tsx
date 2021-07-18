@@ -129,8 +129,10 @@ export function Header() {
         initial={false}
         animate={isMenuOpen ? 'open' : 'closed'}
       >
-        <motion.div className="background" variants={sidebarVariants} />
-        <MobileNavigation />
+        <motion.div className="background" variants={sidebarVariants}>
+          <MobileNavigation />
+        </motion.div>
+
         <MenuToggle toggle={() => toggleMenuOpen()} />
       </Styled.MobileMenuToggle>
     </Styled.Header>

@@ -114,7 +114,11 @@ export function Product({ product }: ProductPageProps) {
               key={actualVariant.img}
               initial={{ scale: 0 }}
               animate={{
-                scale: 1
+                scale: 1,
+                transition: {
+                  type: 'spring',
+                  bounce: 0.45
+                }
               }}
             >
               <img src={actualVariant.img} alt={product.title} />
