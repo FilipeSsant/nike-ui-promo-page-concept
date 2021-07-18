@@ -23,7 +23,7 @@ export const MenuToggle = styled(motion.button)`
     height: 2.5px;
     border-radius: 6px;
     width: 40%;
-    background: var(--white-600);
+    background: var(--black-400);
     transform-origin: 1.5px;
 
     &:not(:last-child) {

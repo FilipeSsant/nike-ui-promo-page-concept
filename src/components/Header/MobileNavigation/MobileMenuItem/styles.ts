@@ -10,6 +10,6 @@ export const MenuItem = styled(motion.li)`
   font-size: 2rem;
   padding: 1.6rem 3.2rem;
 
-  color: var(--white-600);
+  color: var(--black-400);
   text-transform: uppercase;
 `

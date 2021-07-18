@@ -11,7 +11,7 @@ export const MobileMenu = styled(motion.nav)`
     left: 0;
     bottom: 0;
     width: 100vw;
-    background: var(--black-400);
+    background: var(--white-600);
   }
 
   @media screen and (max-width: 840px) {
