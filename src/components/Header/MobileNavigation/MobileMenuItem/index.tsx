@@ -26,7 +26,7 @@ interface MenuItemProps {
   children: ReactNode
 }
 
-export function MenuItem({ children }: MenuItemProps) {
+export function MobileMenuItem({ children }: MenuItemProps) {
   return (
     <Styled.MenuItem variants={variants} whileTap={{ scale: 0.9 }}>
       {children}

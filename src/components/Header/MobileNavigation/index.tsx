@@ -1,7 +1,7 @@
 import { motion, useCycle, Variants } from 'framer-motion'
 import { menuItems } from '..'
-import { MenuItem } from './MenuItem'
 import { MenuToggle } from './MenuToggle'
+import { MobileMenuItem } from './MobileMenuItem'
 import * as Styled from './styles'
 
 const sidebarVariants: Variants = {
@@ -41,7 +41,7 @@ export function MobileNavigation() {
       <motion.div className="background" variants={sidebarVariants}>
         <Styled.Navigation variants={navigationVariants}>
           {menuItems.map((item) => (
-            <MenuItem key={item}>{item}</MenuItem>
+            <MobileMenuItem key={item}>{item}</MobileMenuItem>
           ))}
         </Styled.Navigation>
       </motion.div>
