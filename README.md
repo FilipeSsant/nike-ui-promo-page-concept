@@ -1,4 +1,4 @@
-# Nike UI Concept Code By Filipe Santos
+# Nike UI Promo Concept Code By Filipe Santos
 
 App using React JS, Framer Motion, Styled Components and TypeScript.
 Design based in [Nike Promo Page Design Concept in Figma by Ilia Utkin](https://www.figma.com/community/file/904707398442738360/Nike-Promo-Page-Design-Concept). **All resources used to develop here is used only for study.**
