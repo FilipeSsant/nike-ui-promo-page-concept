@@ -65,3 +65,21 @@ export const Links = styled.div`
     display: none;
   }
 `
+
+export const MobileMenuToggle = styled(motion.nav)`
+  display: none;
+
+  .background {
+    z-index: 80;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    background: var(--black-400);
+  }
+
+  @media screen and (max-width: 840px) {
+    display: block;
+  }
+`

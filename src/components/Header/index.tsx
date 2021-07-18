@@ -1,5 +1,7 @@
-import { motion, Variants } from 'framer-motion'
+import { motion, useCycle, Variants } from 'framer-motion'
 import { AiOutlineShopping, AiOutlineUser } from 'react-icons/ai'
+import { MobileNavigation } from './MobileNavigation'
+import { MenuToggle } from './MobileNavigation/MenuToggle'
 import * as Styled from './styles'
 
 const menuItemVariants: Variants = {
@@ -50,9 +52,30 @@ const logoVariants: Variants = {
     }
   }
 }
+const sidebarVariants: Variants = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    transition: {
+      type: 'spring',
+      stiffness: 20,
+      restDelta: 2
+    }
+  }),
+  closed: {
+    clipPath: 'circle(30px at 40px 40px)',
+    transition: {
+      delay: 0.5,
+      type: 'spring',
+      stiffness: 400,
+      damping: 40
+    }
+  }
+}
+
+export const menuItems = ['New Releases', 'Men', 'Women', 'Customize']
 
 export function Header() {
-  const menuItems = ['New Releases', 'Men', 'Women', 'Customize']
+  const [isMenuOpen, toggleMenuOpen] = useCycle(false, true)
 
   return (
     <Styled.Header>
@@ -101,6 +124,15 @@ export function Header() {
           <AiOutlineShopping size="3.6rem" />
         </motion.div>
       </Styled.Links>
+
+      <Styled.MobileMenuToggle
+        initial={false}
+        animate={isMenuOpen ? 'open' : 'closed'}
+      >
+        <motion.div className="background" variants={sidebarVariants} />
+        <MobileNavigation />
+        <MenuToggle toggle={() => toggleMenuOpen()} />
+      </Styled.MobileMenuToggle>
     </Styled.Header>
   )
 }

@@ -1,6 +1,6 @@
 import { AnimateSharedLayout, motion, Variants } from 'framer-motion'
 import { useState } from 'react'
-import { ProductProps, VariantProps } from '../../services/product'
+import { ProductProps, VariantProps } from '../../mocks/product'
 import * as Styles from './styles'
 
 const heroVariants: Variants = {

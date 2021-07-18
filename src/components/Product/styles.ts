@@ -25,7 +25,6 @@ export const Product = styled.section`
 `
 
 export const ProductInfoContainer = styled(motion.div)`
-  /* border: 1px solid purple; */
   flex: 2;
 `
 

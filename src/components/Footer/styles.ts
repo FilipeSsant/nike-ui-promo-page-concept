@@ -8,9 +8,8 @@ export const Footer = styled(motion.footer)`
   background: var(--white-500);
 
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   span,
   button {
@@ -25,7 +24,6 @@ export const Footer = styled(motion.footer)`
   }
 
   @media screen and (max-width: 720px) {
-    flex-direction: column;
     padding: 3rem 2rem;
   } ;
 `

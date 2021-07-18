@@ -1,8 +1,8 @@
 import nikeAirEdgeBlack from '../img/nike-air-edge-270-black.png'
 import nikeAirEdgeBlue from '../img/nike-air-edge-270-blue.png'
+import nikeAirEdgeBrown from '../img/nike-air-edge-270-brown.png'
 import nikeAirEdgeWhite from '../img/nike-air-edge-270-white.png'
 import nikeAirEdgeYellow from '../img/nike-air-edge-270-yellow.png'
-import nikeAirEdgeBrown from '../img/nike-air-edge-270.png'
 
 export interface VariantProps {
   img: string
