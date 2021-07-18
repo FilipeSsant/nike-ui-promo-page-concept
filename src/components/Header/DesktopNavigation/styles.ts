@@ -1,21 +1,7 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-export const Header = styled.header`
-  height: 12rem;
-  margin: 0 2rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2.4rem;
-
-  @media screen and (max-width: 840px) {
-    justify-content: center;
-  }
-`
-
-export const Menu = styled.nav`
+export const DesktopMenu = styled(motion.nav)`
   text-transform: uppercase;
 
   @media screen and (max-width: 840px) {
@@ -47,21 +33,5 @@ export const MenuItem = styled(motion.div)`
     &::after {
       width: 100%;
     }
-  }
-`
-
-export const Links = styled.div`
-  display: flex;
-
-  svg {
-    cursor: pointer;
-  }
-
-  div + div {
-    margin-left: 3.2rem;
-  }
-
-  @media screen and (max-width: 840px) {
-    display: none;
   }
 `

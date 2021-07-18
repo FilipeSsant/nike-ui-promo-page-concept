@@ -1,27 +1,8 @@
-import { motion, useCycle, Variants } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { AiOutlineShopping, AiOutlineUser } from 'react-icons/ai'
+import { DesktopNavigation } from './DesktopNavigation'
 import { MobileNavigation } from './MobileNavigation'
-import { MenuToggle } from './MobileNavigation/MenuToggle'
 import * as Styled from './styles'
-
-const menuItemVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 10
-  },
-  visible: (idx) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 180,
-      delay: idx * 0.4
-    }
-  }),
-  hover: {
-    scale: 1
-  }
-}
 
 const menuOtherItemsVariants: Variants = {
   hidden: {
@@ -52,31 +33,10 @@ const logoVariants: Variants = {
     }
   }
 }
-const sidebarVariants: Variants = {
-  open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-    transition: {
-      type: 'spring',
-      stiffness: 20,
-      restDelta: 2
-    }
-  }),
-  closed: {
-    clipPath: 'circle(30px at 40px 40px)',
-    transition: {
-      delay: 0.5,
-      type: 'spring',
-      stiffness: 400,
-      damping: 40
-    }
-  }
-}
 
 export const menuItems = ['New Releases', 'Men', 'Women', 'Customize']
 
 export function Header() {
-  const [isMenuOpen, toggleMenuOpen] = useCycle(false, true)
-
   return (
     <Styled.Header>
       <motion.svg
@@ -95,19 +55,8 @@ export function Header() {
         />
       </motion.svg>
 
-      <Styled.Menu>
-        {menuItems.map((item, idx) => (
-          <Styled.MenuItem
-            custom={idx}
-            variants={menuItemVariants}
-            initial="hidden"
-            animate="visible"
-            key={item}
-          >
-            {item}
-          </Styled.MenuItem>
-        ))}
-      </Styled.Menu>
+      <DesktopNavigation />
+
       <Styled.Links>
         <motion.div
           variants={menuOtherItemsVariants}
@@ -125,16 +74,7 @@ export function Header() {
         </motion.div>
       </Styled.Links>
 
-      <Styled.MobileMenuToggle
-        initial={false}
-        animate={isMenuOpen ? 'open' : 'closed'}
-      >
-        <motion.div className="background" variants={sidebarVariants}>
-          <MobileNavigation />
-        </motion.div>
-
-        <MenuToggle toggle={() => toggleMenuOpen()} />
-      </Styled.MobileMenuToggle>
+      <MobileNavigation />
     </Styled.Header>
   )
 }
