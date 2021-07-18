@@ -1,6 +1,7 @@
 import { motion, useCycle, Variants } from 'framer-motion'
 import { menuItems } from '..'
 import { MenuToggle } from './MenuToggle'
+import { MobileActionsNavigation } from './MobileActionsNavigation'
 import { MobileMenuItem } from './MobileMenuItem'
 import * as Styled from './styles'
 
@@ -44,6 +45,7 @@ export function MobileNavigation() {
             <MobileMenuItem key={item}>{item}</MobileMenuItem>
           ))}
         </Styled.Navigation>
+        <MobileActionsNavigation />
       </motion.div>
 
       <MenuToggle toggle={() => toggleMenuOpen()} />

@@ -6,7 +6,7 @@ interface DesktopMenuItemProps {
   children: ReactNode
 }
 
-const menuItemVariants: Variants = {
+const variants: Variants = {
   hidden: {
     opacity: 0,
     y: 10
@@ -16,13 +16,11 @@ const menuItemVariants: Variants = {
     y: 0,
     transition: {
       type: 'spring',
-      stiffness: 200
+      stiffness: 180
     }
   }
 }
 
 export function DesktopMenuItem({ children }: DesktopMenuItemProps) {
-  return (
-    <Styled.MenuItem variants={menuItemVariants}>{children}</Styled.MenuItem>
-  )
+  return <Styled.MenuItem variants={variants}>{children}</Styled.MenuItem>
 }

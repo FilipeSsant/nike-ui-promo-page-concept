@@ -1,24 +1,7 @@
 import { motion, Variants } from 'framer-motion'
-import { AiOutlineShopping, AiOutlineUser } from 'react-icons/ai'
 import { DesktopNavigation } from './DesktopNavigation'
 import { MobileNavigation } from './MobileNavigation'
 import * as Styled from './styles'
-
-const menuOtherItemsVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    scale: 0
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 180,
-      duration: 0.5
-    }
-  }
-}
 
 const logoVariants: Variants = {
   hidden: {
@@ -56,23 +39,6 @@ export function Header() {
       </motion.svg>
 
       <DesktopNavigation />
-
-      <Styled.Links>
-        <motion.div
-          variants={menuOtherItemsVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <AiOutlineUser size="3.6rem" />
-        </motion.div>
-        <motion.div
-          variants={menuOtherItemsVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <AiOutlineShopping size="3.6rem" />
-        </motion.div>
-      </Styled.Links>
 
       <MobileNavigation />
     </Styled.Header>

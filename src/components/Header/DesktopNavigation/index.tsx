@@ -1,5 +1,6 @@
 import { Variants } from 'framer-motion'
 import { menuItems } from '..'
+import { DesktopActionsNavigation } from './DesktopActionsNavigation'
 import { DesktopMenuItem } from './DesktopMenuItem'
 import * as Styled from './styles'
 
@@ -17,14 +18,17 @@ const menuVariants: Variants = {
 
 export function DesktopNavigation() {
   return (
-    <Styled.DesktopMenu
-      variants={menuVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      {menuItems.map((item) => (
-        <DesktopMenuItem key={item}>{item}</DesktopMenuItem>
-      ))}
-    </Styled.DesktopMenu>
+    <>
+      <Styled.DesktopMenu
+        variants={menuVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {menuItems.map((item) => (
+          <DesktopMenuItem key={item}>{item}</DesktopMenuItem>
+        ))}
+      </Styled.DesktopMenu>
+      <DesktopActionsNavigation />
+    </>
   )
 }
