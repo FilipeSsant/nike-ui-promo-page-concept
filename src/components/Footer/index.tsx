@@ -47,7 +47,7 @@ export function Footer() {
         <Styles.SocialMedia>
           <FaGithub size="2rem" />
           <a
-            href="https://github.com/FilipeSsant/whatsinear"
+            href="https://github.com/FilipeSsant/nike-ui-promo-page-concept"
             target="_blank"
             rel="noreferrer"
           >
